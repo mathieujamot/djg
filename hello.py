@@ -1,1 +1,3 @@
-from hello import hello
+def hello():
+    """Print a greeting."""
+    print("hello")
