@@ -14,7 +14,23 @@ class EnergySimulation:
         for source in self.energy_sources:
             if hasattr(source, 'production'):
                 total_production += source.production(hours)
-        return total_production
+        total_consumption = self.calculate_consumption(hours)
+        net_energy = total_production - total_consumption
+
+        # Handle energy storage with batteries
+        for source in self.energy_sources:
+            if isinstance(source, Battery):
+                if net_energy > 0:
+                    source.charge(net_energy)
+                else:
+                    net_energy += source.discharge(-net_energy)
+
+        return net_energy
+
+    def calculate_consumption(self, hours):
+        """Calculate total energy consumption in MWh for a given number of hours."""
+        # Placeholder for actual consumption calculation
+        return 1000 * hours  # Example: 1000 MWh per hour
 
 # Example usage
 if __name__ == "__main__":
