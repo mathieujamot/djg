@@ -5,4 +5,6 @@ class SolarFarm:
 
     def production(self, hours):
         """Calculate energy production in MWh for a given number of hours."""
-        return self.capacity_mw * min(hours, self.sunlight_hours)
+        # Assume an efficiency factor for solar panels
+        efficiency = 0.2  # Example efficiency factor
+        return self.capacity_mw * efficiency * min(hours, self.sunlight_hours)
