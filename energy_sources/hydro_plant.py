@@ -5,4 +5,5 @@ class HydroPlant:
 
     def production(self, hours):
         """Calculate energy production in MWh for a given number of hours."""
-        return self.capacity_mw * hours
+        # Simplified model: production is proportional to water flow rate
+        return self.capacity_mw * (self.water_flow_rate / 100) * hours

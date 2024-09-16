@@ -5,4 +5,5 @@ class WindFarm:
 
     def production(self, hours):
         """Calculate energy production in MWh for a given number of hours."""
-        return self.capacity_mw * hours
+        # Simplified model: production is proportional to wind speed
+        return self.capacity_mw * (self.wind_speed / 10) * hours
